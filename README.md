@@ -6,45 +6,46 @@ Unofficial Chef Cookbook that installs AWS CloudWatch Logs Agent and deploy it's
 Usage
 =====
 
-1. Add this cookbook to your base recipe:
-   ```
-   cookbook 'aws-cloudwatchlogs', '~> 1.1.1'
-   ```
-2. You need to configure the following node attributes via an `environment` or `role`:
-   ```
-   default_attributes(
-      'aws-cwlogs' => {
-         'region' => 'your_aws_region',
-         'aws_access_key_id' => 'your_aws_access_key',
-         'aws_secret_access_key' => 'your_aws_secret_key',
-         'log_files' => {
-            '/var/log/syslog' => {
-               'datetime_format' => '%b %d %H:%M:%S',
-               'file' => '/var/log/syslog',
-               'buffer_duration' => '5000',
-               'log_stream_name' => '{instance_id}',
-               'initial_position' => 'start_of_file',
-               'log_group_name' => '/var/log/syslog'
-            }
+Add this cookbook to your base recipe:
+```ruby
+cookbook 'aws-cloudwatchlogs', '~> 1.1.1'
+```
+
+You need to configure the following node attributes via an `environment` or `role`:
+```ruby
+default_attributes(
+   'aws-cwlogs' => {
+      'region' => 'your_aws_region',
+      'aws_access_key_id' => 'your_aws_access_key',
+      'aws_secret_access_key' => 'your_aws_secret_key',
+      'log_files' => {
+         '/var/log/syslog' => {
+            'datetime_format' => '%b %d %H:%M:%S',
+            'file' => '/var/log/syslog',
+            'buffer_duration' => '5000',
+            'log_stream_name' => '{instance_id}',
+            'initial_position' => 'start_of_file',
+            'log_group_name' => '/var/log/syslog'
          }
       }
-   )
-   ```
+   }
+)
+```
 
 Or you can also configure by declaring it in another cookbook at a higher precedence level:
-   ```
-   default['aws-cwlogs']['region'] = 'your_aws_region'
-   default['aws-cwlogs']['aws_access_key_id'] = 'your_aws_access_key'
-   default['aws-cwlogs']['aws_secret_access_key'] = 'your_aws_secret_key'
-   default['aws-cwlogs']['log_files']['/var/log/syslog'] = {
-      'datetime_format' => '%b %d %H:%M:%S',
-      'file' => '/var/log/syslog',
-      'buffer_duration' => '5000',
-      'log_stream_name' => '{instance_id}',
-      'initial_position' => 'start_of_file',
-      'log_group_name' => '/var/log/syslog'
-   }
-   ```
+```ruby
+default['aws-cwlogs']['region'] = 'your_aws_region'
+default['aws-cwlogs']['aws_access_key_id'] = 'your_aws_access_key'
+default['aws-cwlogs']['aws_secret_access_key'] = 'your_aws_secret_key'
+default['aws-cwlogs']['log_files']['/var/log/syslog'] = {
+   'datetime_format' => '%b %d %H:%M:%S',
+   'file' => '/var/log/syslog',
+   'buffer_duration' => '5000',
+   'log_stream_name' => '{instance_id}',
+   'initial_position' => 'start_of_file',
+   'log_group_name' => '/var/log/syslog'
+}
+```
 
 **Remember**: You can configure as many logs as you need with `log_files` attribute.
 
@@ -55,7 +56,7 @@ Example
 
 Those attributes used before will generate the AWS CloudWatch Logs configuration below:
 
-```
+```ruby
 [/var/log/syslog]
 datetime_format = %b %d %H:%M:%S
 file = /var/log/syslog
