@@ -1,10 +1,9 @@
-AWS CloudWatch Logs Cookbook
-============================
+# AWS CloudWatch Logs Cookbook
 
-Unofficial Chef Cookbook that installs AWS CloudWatch Logs Agent and deploy it's configurations automatically.
+Unofficial Chef Cookbook that installs [AWS CloudWatch Logs][aws-cloudwatch-url]<sup>™</sup>
+Agent and deploy it's configurations automatically.
 
-Usage
-=====
+## Usage
 
 Add this cookbook to your base recipe:
 ```ruby
@@ -51,12 +50,11 @@ default['aws-cwlogs']['log_files']['/var/log/syslog'] = {
 
 **Note**: We are not making use of `data_bags` for AWS Credentials in this recipe at this time.
 
-Example
-=======
+## Example
 
 Those attributes used before will generate the AWS CloudWatch Logs configuration below:
 
-```ruby
+```ini
 [/var/log/syslog]
 datetime_format = %b %d %H:%M:%S
 file = /var/log/syslog
@@ -68,40 +66,42 @@ log_group_name = /var/log/syslog
 
 For more deployment details about AWS CloudWatch Logs, please visit the [AWS CloudWatch Logs Documentation](https://aws.amazon.com/documentation/cloudwatch).
 
-Requirements
-============
+## Requirements
 
-Platform
---------
+### Platform
 
 * Ubuntu 14.04
 
-Attributes
-==========
+## Attributes
 
 See `attributes/default.rb` for default values.
 
-Recipes
-=======
+## Recipes
 
-default
--------
-This recipe will check if all necessary requirements being met, and after that will call `configure` and `install` recipe.
+### default
 
-configure
----------
+This recipe will check if all necessary requirements being met, and after
+that will call `configure` and `install` recipe.
+
+### configure
+
 This recipe will prepare and configure all files required by AWS CloudWatch Logs.
 
-install
--------
+### install
+
 This recipe will install AWS CloudWatch Logs Agent.
 
-Changes
-=======
+## Changes
 
 See `CHANGELOG.md` for more details.
 
-License and Author
-==================
+## License and Author
 
 See `LICENSE` for more details.
+
+## Trademark
+
+Amazon Web Services and AWS are trademarks of Amazon.com, Inc. or
+its affiliates in the United States and/or other countries.
+
+   [aws-cloudwatch-url]: https://aws.amazon.com/cloudwatch/
