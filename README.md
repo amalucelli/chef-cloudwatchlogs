@@ -1,4 +1,5 @@
 # AWS CloudWatch Logs Cookbook
+[![License][license-badge]][chef-cloudwatchlogs-license-url]
 
 Unofficial Chef Cookbook that installs [AWS CloudWatch Logs][aws-cloudwatch-url]<sup>™</sup>
 Agent and deploy it's configurations automatically.
@@ -105,3 +106,5 @@ Amazon Web Services and AWS are trademarks of Amazon.com, Inc. or
 its affiliates in the United States and/or other countries.
 
    [aws-cloudwatch-url]: https://aws.amazon.com/cloudwatch/
+   [chef-cloudwatchlogs-license-url]: https://github.com/amalucelli/chef-cloudwatchlogs/blob/markdown/LICENSE
+   [license-badge]: http://img.shields.io/badge/license-apache-757575.svg?style=flat-square
