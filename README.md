@@ -1,4 +1,5 @@
 # AWS CloudWatch Logs Cookbook
+[![Runtime][runtime-badge]][chef-cloudwatchlogs-runtime-url]
 [![License][license-badge]][chef-cloudwatchlogs-license-url]
 
 Unofficial Chef Cookbook that installs [AWS CloudWatch Logs][aws-cloudwatch-url]<sup>™</sup>
@@ -107,4 +108,6 @@ its affiliates in the United States and/or other countries.
 
    [aws-cloudwatch-url]: https://aws.amazon.com/cloudwatch/
    [chef-cloudwatchlogs-license-url]: https://github.com/amalucelli/chef-cloudwatchlogs/blob/markdown/LICENSE
-   [license-badge]: http://img.shields.io/badge/license-apache-757575.svg?style=flat-square
+   [chef-cloudwatchlogs-runtime-url]: https://github.com/amalucelli/chef-cloudwatchlogs
+   [license-badge]: https://img.shields.io/badge/license-apache-757575.svg?style=flat-square
+   [runtime-badge]: https://img.shields.io/badge/runtime-ruby-orange.svg?style=flat-square
