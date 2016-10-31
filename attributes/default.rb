@@ -24,4 +24,3 @@ default['aws-cwlogs']['aws_secret_access_key'] = nil
 
 # AWS CloudWatch Logs
 default['aws-cwlogs']['path'] = '/var/awslogs'
-default['aws-cwlogs']['log_files'] = nil

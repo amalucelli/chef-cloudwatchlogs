@@ -17,10 +17,7 @@
 # limitations under the License.
 #
 
-directory "#{node['aws-cwlogs']['path']}/etc" do
-  recursive true
-end
-
+# always keep aws.conf updated
 template "#{node['aws-cwlogs']['path']}/etc/aws.conf" do
    source 'aws.conf.erb'
    owner 'root'
@@ -33,7 +30,9 @@ template "#{node['aws-cwlogs']['path']}/etc/aws.conf" do
    })
 end
 
-template '/tmp/awslogs.cfg' do
+# always generate awslogs.conf based on default
+# attributes related to log files
+template "#{node['aws-cwlogs']['path']}/etc/awslogs.conf" do
    source 'awslogs.conf.erb'
    owner 'root'
    group 'root'
@@ -41,4 +40,10 @@ template '/tmp/awslogs.cfg' do
    variables ({
       :logFiles => node['aws-cwlogs']['log_files']
    })
+end
+
+# always restart aws cloudwatch logs agent
+# after the configuration files were updated
+service 'awslogs' do
+   action [:restart]
 end

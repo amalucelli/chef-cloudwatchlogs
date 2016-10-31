@@ -32,5 +32,7 @@ if node['aws-cwlogs']['aws_secret_access_key'].nil?
    return
 end
 
+# only install if it isn't installed
+include_recipe 'aws-cloudwatchlogs::install' unless ::File.exist?(node['aws-cwlogs']['path'])
+# always reconfigure aws cloudwatch logs configuration files
 include_recipe 'aws-cloudwatchlogs::config'
-include_recipe 'aws-cloudwatchlogs::install'
