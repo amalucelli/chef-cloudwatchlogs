@@ -5,6 +5,7 @@ Changes
 
 * Removing the `log_files` attribute.
 * Implementing a better logic to handle if the agent is already installed.
+* Fixing `aws_access_key_id` and `aws_secret_access_key` attributes values.
 
 # 1.1.1 / 2016-10-24
 
