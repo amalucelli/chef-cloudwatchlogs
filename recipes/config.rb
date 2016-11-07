@@ -30,6 +30,14 @@ template "#{node['aws-cwlogs']['path']}/etc/aws.conf" do
    })
 end
 
+# always keep logging.conf updated
+template "#{node['aws-cwlogs']['path']}/etc/logging.conf" do
+   source 'logging.conf.erb'
+   owner 'root'
+   group 'root'
+   mode 0600
+end
+
 # always generate awslogs.conf based on default
 # attributes related to log files
 template "#{node['aws-cwlogs']['path']}/etc/awslogs.conf" do

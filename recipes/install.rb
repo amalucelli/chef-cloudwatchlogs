@@ -34,6 +34,13 @@ template "#{node['aws-cwlogs']['path']}/etc/aws.conf" do
    })
 end
 
+template "#{node['aws-cwlogs']['path']}/etc/logging.conf" do
+   source 'logging.conf.erb'
+   owner 'root'
+   group 'root'
+   mode 0600
+end
+
 template '/tmp/awslogs.cfg' do
    source 'awslogs.conf.erb'
    owner 'root'
