@@ -9,7 +9,7 @@ Agent and deploy it's configurations automatically.
 
 Add this cookbook to your base recipe:
 ```ruby
-cookbook 'aws-cloudwatchlogs', '~> 1.1.3'
+cookbook 'aws-cloudwatchlogs', '~> 1.1.4'
 ```
 
 You need to configure the following node attributes via an `environment` or `role`:
