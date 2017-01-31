@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: aws-cloudwatchlogs
-# Attributes:: default
+# Resources:: aws_cwlogs
 #
 # Copyright 2016, Alexandre Malucelli, All Rights Reserved.
 #
@@ -17,10 +17,12 @@
 # limitations under the License.
 #
 
-# AWS Credentials
-default['aws_cwlogs']['region'] = nil
-default['aws_cwlogs']['aws_access_key_id'] = nil
-default['aws_cwlogs']['aws_secret_access_key'] = nil
+resource_name :aws_cwlogs if respond_to?(:resource_name)
+provides :aws_cwlogs if respond_to?(:provides)
 
-# AWS CloudWatch Logs
-default['aws_cwlogs']['path'] = '/var/awslogs'
+actions :add, :remove
+default_action :add if defined?(default_action)
+
+attribute :name, :kind_of => String, :name_attribute => true
+attribute :cookbook, :kind_of => String, :default => 'aws-cloudwatchlogs'
+attribute :log, :kind_of => Hash, :required => true, :default => {}

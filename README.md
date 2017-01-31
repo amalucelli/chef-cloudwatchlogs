@@ -9,18 +9,18 @@ Agent and deploy it's configurations automatically.
 
 Add this cookbook to your base recipe:
 ```ruby
-cookbook 'aws-cloudwatchlogs', '~> 1.1.4'
+cookbook 'aws-cloudwatchlogs', '~> 1.1.5'
 ```
 
 You need to configure the following node attributes via an `environment` or `role`:
 ```ruby
 default_attributes(
-   'aws-cwlogs' => {
+   'aws_cwlogs' => {
       'region' => 'your_aws_region',
       'aws_access_key_id' => 'your_aws_access_key',
       'aws_secret_access_key' => 'your_aws_secret_key',
-      'log_files' => {
-         '/var/log/syslog' => {
+      'log' => {
+         'syslog' => {
             'datetime_format' => '%b %d %H:%M:%S',
             'file' => '/var/log/syslog',
             'buffer_duration' => '5000',
@@ -35,10 +35,10 @@ default_attributes(
 
 Or you can also configure by declaring it in another cookbook at a higher precedence level:
 ```ruby
-default['aws-cwlogs']['region'] = 'your_aws_region'
-default['aws-cwlogs']['aws_access_key_id'] = 'your_aws_access_key'
-default['aws-cwlogs']['aws_secret_access_key'] = 'your_aws_secret_key'
-default['aws-cwlogs']['log_files']['/var/log/syslog'] = {
+default['aws_cwlogs']['region'] = 'your_aws_region'
+default['aws_cwlogs']['aws_access_key_id'] = 'your_aws_access_key'
+default['aws_cwlogs']['aws_secret_access_key'] = 'your_aws_secret_key'
+default['aws_cwlogs']['log']['syslog'] = {
    'datetime_format' => '%b %d %H:%M:%S',
    'file' => '/var/log/syslog',
    'buffer_duration' => '5000',
@@ -48,7 +48,22 @@ default['aws-cwlogs']['log_files']['/var/log/syslog'] = {
 }
 ```
 
-**Remember**: You can configure as many logs as you need with `log_files` attribute.
+Once you defined the attributes, you will need to reference `aws_cwlogs` resource in your recipe:
+```ruby
+include_recipe 'aws-cloudwatchlogs'
+
+aws_cwlogs 'syslog' do
+  log node['aws_cwlogs']['log']['syslog']
+end
+
+aws_cwlogs 'messages' do
+  log node['aws_cwlogs']['log']['messages']
+end
+```
+
+This will create a unique configuration file in AWS CloudWatch Logs that will be stored in `etc/config` directory.
+
+**Remember**: You can configure as many logs as you need with `log` attribute.
 
 **Note**: We are not making use of `data_bags` for AWS Credentials in this recipe at this time.
 
@@ -57,7 +72,7 @@ default['aws-cwlogs']['log_files']['/var/log/syslog'] = {
 Those attributes used before will generate the AWS CloudWatch Logs configuration below:
 
 ```ini
-[/var/log/syslog]
+[syslog]
 datetime_format = %b %d %H:%M:%S
 file = /var/log/syslog
 buffer_duration = 5000

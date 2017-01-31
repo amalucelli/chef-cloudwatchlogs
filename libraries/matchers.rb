@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: aws-cloudwatchlogs
-# Attributes:: default
+# Libraries:: matchers
 #
 # Copyright 2016, Alexandre Malucelli, All Rights Reserved.
 #
@@ -17,10 +17,12 @@
 # limitations under the License.
 #
 
-# AWS Credentials
-default['aws_cwlogs']['region'] = nil
-default['aws_cwlogs']['aws_access_key_id'] = nil
-default['aws_cwlogs']['aws_secret_access_key'] = nil
+if defined?(ChefSpec)
+  def add_aws_cwlogs(resource_name)
+    ChefSpec::Matchers::ResourceMatcher.new(:aws_cwlogs, :add, resource_name)
+  end
 
-# AWS CloudWatch Logs
-default['aws_cwlogs']['path'] = '/var/awslogs'
+  def remove_aws_cwlogs(resource_name)
+    ChefSpec::Matchers::ResourceMatcher.new(:aws_cwlogs, :remove, resource_name)
+  end
+end

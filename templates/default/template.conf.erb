@@ -1,0 +1,10 @@
+<% unless @logName.nil? -%>
+<% unless @logConfig.nil? -%>
+
+<%= '[' + @logName + ']' %>
+<% @logConfig.each do |key,value| %>
+<%= key %> = <%= value %>
+<% end %>
+
+<% end %>
+<% end %>

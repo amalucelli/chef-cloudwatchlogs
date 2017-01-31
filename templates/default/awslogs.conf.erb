@@ -117,14 +117,3 @@ logging_config_file = /var/awslogs/etc/logging.conf
 # ----------------------------------------------------------------------------------------------------------------------
 #  %c           Locale's appropriate date and time representation.                                      Tue Aug 16 21:30:00 1988 (en_US)
 # ----------------------------------------------------------------------------------------------------------------------
-
-<% unless @logFiles.nil? -%>
-<% @logFiles.each do |logName, logConfig| %>
-
-<%= '[' + logName + ']' %>
-<% logConfig.each do |key,value| %>
-<%= key %> = <%= value %>
-<% end %>
-
-<% end %>
-<% end -%>
