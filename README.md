@@ -48,6 +48,7 @@ default['aws_cwlogs']['log']['syslog'] = {
 }
 ```
 **Note**: If you do not specify aws credentials, it will attempt to use the AWS IAM Role assigned to the instance instead.
+
 Once you defined the attributes, you will need to reference `aws_cwlogs` resource in your recipe:
 ```ruby
 include_recipe 'aws-cloudwatchlogs'
