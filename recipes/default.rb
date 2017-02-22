@@ -22,16 +22,6 @@ if node['aws_cwlogs']['region'].nil?
    return
 end
 
-if node['aws_cwlogs']['aws_access_key_id'].nil?
-   log('AWS Access Key is necessary for this cookbook.') { level :error }
-   return
-end
-
-if node['aws_cwlogs']['aws_secret_access_key'].nil?
-   log('AWS Secret Access Key is necessary for this cookbook.') { level :error }
-   return
-end
-
 # only install if it isn't installed
 include_recipe 'aws-cloudwatchlogs::install' unless ::File.exist?(node['aws_cwlogs']['path'])
 # always reconfigure aws cloudwatch logs configuration files

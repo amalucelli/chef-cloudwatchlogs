@@ -1,6 +1,9 @@
 Changes
 =======
 
+# 1.1.6 / 2017-02-22
+* Removed the requirement for `aws_access_key_id` and `aws_secret_access_key` attributes values.
+
 # 1.1.5 / 2017-01-31
 * Implementing a better way to handle AWS CloudWatch Logs configurations,
   now each log has a configuration file that is provisioned via Chef Resources.
