@@ -8,11 +8,13 @@ Agent and deploy it's configurations automatically.
 ## Usage
 
 Add this cookbook to your base recipe:
+
 ```ruby
 cookbook 'aws-cloudwatchlogs', '~> 1.1.6'
 ```
 
 You need to configure the following node attributes via an `environment` or `role`:
+
 ```ruby
 default_attributes(
    'aws_cwlogs' => {
@@ -34,6 +36,7 @@ default_attributes(
 ```
 
 Or you can also configure by declaring it in another cookbook at a higher precedence level:
+
 ```ruby
 default['aws_cwlogs']['region'] = 'your_aws_region'
 default['aws_cwlogs']['aws_access_key_id'] = 'your_aws_access_key'
@@ -50,6 +53,7 @@ default['aws_cwlogs']['log']['syslog'] = {
 **Note**: If you do not specify aws credentials, it will attempt to use the AWS IAM Role assigned to the instance instead.
 
 Once you defined the attributes, you will need to reference `aws_cwlogs` resource in your recipe:
+
 ```ruby
 include_recipe 'aws-cloudwatchlogs'
 
