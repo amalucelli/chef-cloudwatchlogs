@@ -2,7 +2,7 @@
 [![Runtime][runtime-badge]][chef-cloudwatchlogs-runtime-url]
 [![License][license-badge]][chef-cloudwatchlogs-license-url]
 
-Unofficial Chef Cookbook that installs [AWS CloudWatch Logs][aws-cloudwatch-url]<sup>™</sup>
+Unofficial Chef Cookbook that install and configure [AWS CloudWatch Logs][aws-cloudwatch-url]
 Agent and deploy it's configurations automatically.
 
 ## Usage
