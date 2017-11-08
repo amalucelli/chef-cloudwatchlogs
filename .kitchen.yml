@@ -8,8 +8,16 @@ provisioner:
 platforms:
   - name: ubuntu-14.04
 
+verifier:
+  name: inspec
+
 suites:
   - name: default
     run_list:
       - recipe[aws-cloudwatchlogs::default]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
     attributes:
+      aws_cwlogs:
+        region: us-east-1
