@@ -17,12 +17,5 @@
 # limitations under the License.
 #
 
-if node['aws_cwlogs']['region'].nil?
-   log('AWS Region is necessary for this cookbook.') { level :error }
-   return
-end
-
 # only install if it isn't installed
-include_recipe 'aws-cloudwatchlogs::install' unless ::File.exist?(node['aws_cwlogs']['path'])
-# always reconfigure aws cloudwatch logs configuration files
-include_recipe 'aws-cloudwatchlogs::config'
+include_recipe 'aws-cloudwatchlogs::install'
