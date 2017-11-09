@@ -68,6 +68,10 @@ remote_file "#{node['aws_cwlogs']['path']}/awslogs-agent-setup.py" do
    mode 0755
 end
 
+package 'python'
+package 'epel-release' if node[:platform_family] == 'rhel'
+package 'python-pip'
+
 # install aws cloudwatch logs agent
 execute 'Install CloudWatch Logs Agent' do
    command "#{node['aws_cwlogs']['path']}/awslogs-agent-setup.py -n -r #{node['aws_cwlogs']['region']} -c /tmp/awslogs.cfg"
