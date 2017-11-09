@@ -70,7 +70,7 @@ end
 
 package 'python'
 package 'epel-release' if node[:platform_family] == 'rhel'
-package 'python-pip'
+package 'python-pip' if node[:platform_family] == 'rhel'
 
 # install aws cloudwatch logs agent
 execute 'Install CloudWatch Logs Agent' do

@@ -17,5 +17,4 @@
 # limitations under the License.
 #
 
-# only install if it isn't installed
 include_recipe 'aws-cloudwatchlogs::install'
