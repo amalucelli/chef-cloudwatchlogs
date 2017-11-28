@@ -21,6 +21,9 @@ provides :aws_cwlogs if respond_to?(:provides)
 use_inline_resources if defined?(use_inline_resources)
 
 action :add do
+   service 'awslogs' do
+      action :nothing
+   end
    Chef::Log.debug "Adding configuration for #{new_resource.name}"
    template ::File.join(node['aws_cwlogs']['path'], 'etc/config', "#{new_resource.name}.conf") do
       owner 'root'
@@ -36,6 +39,9 @@ action :add do
 end
 
 action :remove do
+   service 'awslogs' do
+      action :nothing
+   end
    conf_path = ::File.join(node['aws_cwlogs']['path'], 'etc/config')
    Chef::Log.debug "Removing #{new_resource.name} from #{conf_path}"
    file ::File.join(node['aws_cwlogs']['path'], 'etc/config', "#{new_resource.name}.conf") do
