@@ -3,6 +3,8 @@ Changes
 
 # 1.1.7 / 2017-11-21
 * Fixed 'service resource not found' error.
+* Several improvements for better handling the installation process.
+* Added more supported platforms.
 
 # 1.1.6 / 2017-02-22
 * Removed the requirement for `aws_access_key_id` and `aws_secret_access_key` attributes values.
